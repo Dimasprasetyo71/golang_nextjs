@@ -1,0 +1,187 @@
+paths: {
+  "/users": {
+    "post": {
+      "summary": "Menambahkan pengguna baru",
+      "operationId": "addUser",
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/User"
+            }
+          }
+        }
+      },
+      "responses": {
+        "201": {
+          "description": "Pengguna berhasil ditambahkan"
+        },
+        "400": {
+          "description": "Pengguna sudah ada"
+        }
+      }
+    }
+  }
+  "/users/{id}": {
+    "put": {
+      "summary": "Mengubah pengguna",
+      "operationId": "updateUser",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/User"
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "Pengguna berhasil diubah"
+        },
+        "404": {
+          "description": "Pengguna tidak ditemukan"
+        }
+      }
+    }
+  }
+  "/users/{id}": {
+    "delete": {
+      "summary": "Menghapus pengguna",
+      "operationId": "deleteUser",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Pengguna berhasil dihapus"
+        },
+        "404": {
+          "description": "Pengguna tidak ditemukan"
+        }
+      }
+    }
+  }
+  "/products": {
+    "get": {
+      "summary": "Mendapatkan daftar produk",
+      "operationId": "getProducts",
+      "responses": {
+        "200": {
+          "description": "Daftar produk berhasil diambil",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Product"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "post": {
+      "summary": "Menambahkan produk baru",
+      "operationId": "addProduct",
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Product"
+            }
+          }
+        }
+      },
+      "responses": {
+        "201": {
+          "description": "Produk berhasil ditambahkan"
+        },
+        "400": {
+          "description": "Produk sudah ada"
+        }
+      }
+    }
+  }
+  "/products/{id}": {
+    "put": {
+      "summary": "Mengubah produk",
+      "operationId": "updateProduct",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Product"
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "Produk berhasil diubah"
+        },
+        "404": {
+          "description": "Produk tidak ditemukan"
+        }
+      }
+    }
+  }
+  "/products/{id}": {
+    "delete": {
+      "summary": "Menghapus produk",
+      "operationId": "deleteProduct",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Produk berhasil dihapus"
+        },
+        "404": {
+          "description": "Produk tidak ditemukan"
+        }
+      }
+    }
+  }
+  
+}
+swagger: "2.0"

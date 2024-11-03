@@ -1,0 +1,86 @@
+# documentation for user service
+info:
+  title: User Service API
+  description: API untuk mengelola pengguna
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+    description: Local server
+paths:
+  /users:
+    post:
+      summary: Menambahkan pengguna baru
+      operationId: addUser
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '201':
+          description: Pengguna berhasil ditambahkan
+        '400':
+          description: Pengguna sudah ada
+          
+    get:
+      summary: Mendapatkan daftar pengguna
+      operationId: getUsers
+      responses:
+        '200':
+          description: Daftar pengguna berhasil diambil
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+
+  /users/{email}:
+    get:
+      summary: Mendapatkan pengguna berdasarkan email
+      operationId: getUserByEmail
+      parameters:
+        - name: email
+          in: path
+          required: true
+          description: Email pengguna yang akan diambil
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Pengguna berhasil ditemukan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '404':
+          description: Pengguna tidak ditemukan
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+          example: "1"
+        firstName:
+          type: string
+          example: "John"
+        lastName:
+          type: string
+          example: "Doe"
+        email:
+          type: string
+          example: "john.doe@example.com"
+        password:
+          type: string
+          example: "password123"
+      required:
+        - id
+        - firstName
+        - lastName
+        - email
+        - password
+        

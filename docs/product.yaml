@@ -1,0 +1,149 @@
+# implement api product documentation
+
+# documentation for product service
+info:
+  title: Product Service API
+  description: API untuk mengelola produk
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+    description: Local server
+
+paths:
+  /products:
+    get:
+      summary: Mendapatkan daftar produk
+      operationId: getProducts
+      responses:
+        '200':
+          description: Daftar produk berhasil diambil
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+    post:
+      summary: Menambahkan produk baru
+      operationId: addProduct
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+      responses:
+        '201':
+          description: Produk berhasil ditambahkan
+        '400':
+          description: Produk sudah ada
+
+  /products/{id}:
+    get:
+      summary: Mendapatkan detail produk
+      operationId: getProduct
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Detail produk berhasil diambil
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        '404':
+          description: Produk tidak ditemukan
+
+  /products/{id}:
+    put:
+      summary: Mengubah produk
+      operationId: updateProduct
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+      responses:
+        '200':
+          description: Produk berhasil diubah
+        '404':
+          description: Produk tidak ditemukan
+
+  /products/{id}:
+    delete:
+      summary: Menghapus produk
+      operationId: deleteProduct
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Produk berhasil dihapus
+
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        id:
+          type: string
+          example: "1"
+        name:
+          type: string
+          example: "Product 1"
+        price:
+          type: number
+          example: 10000
+      required:
+        - id
+        - name
+        - price
+
+  responses:
+    ProductNotFound:
+      description: Product not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ProductNotFound'
+
+    ProductCreated:
+
+      description: Product created
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Product'
+
+    ProductUpdated:
+
+      description: Product updated  
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Product'
+
+    ProductDeleted:
+
+      description: Product deleted
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ProductNotFound'
+
+    ProductNotFound: {}
+    
