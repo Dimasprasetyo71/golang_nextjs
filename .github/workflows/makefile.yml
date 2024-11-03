@@ -1,0 +1,26 @@
+name: Makefile CI
+
+on:
+  push:
+    branches: [ "vercel" ]
+  pull_request:
+    branches: [ "vercel" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Change to a Linux environment
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Configure
+      run: ./configure
+
+    - name: Install dependencies
+      run: make
+
+    - name: Run check
+      run: make check
+
+    - name: Run distcheck
+      run: make distcheck
