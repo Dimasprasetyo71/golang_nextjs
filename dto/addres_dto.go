@@ -12,7 +12,6 @@ type AddresRequest struct {
 	UpdatedAt string `json:"updated_at"`
 	IsPrimary bool `json:"is_primary"`
 
-	// IsAvailable bool `json:"is_available"`
 
 }
 

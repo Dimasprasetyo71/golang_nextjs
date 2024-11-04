@@ -8,19 +8,15 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest  # Change to a Linux environment
+    runs-on: ubuntu-latest  # Gunakan `ubuntu-latest` atau runner Linux
 
     steps:
-    - uses: actions/checkout@v4
 
-    - name: Configure
-      run: ./configure
+      - name: Install dependencies
+        run: make
 
-    - name: Install dependencies
-      run: make
+      - name: Run check
+        run: make check
 
-    - name: Run check
-      run: make check
-
-    - name: Run distcheck
-      run: make distcheck
+      - name: Run distcheck
+        run: make distcheck
