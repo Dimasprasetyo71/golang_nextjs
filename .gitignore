@@ -16,3 +16,12 @@
 .idea/
 .vscode/
 *.swp
+
+.go.mod
+.go.sum
+.myapp
+/go
+/deployment
+Dockerfile
+.makefile
+.vercel
