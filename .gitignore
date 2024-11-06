@@ -22,7 +22,7 @@
 myapp
 /go
 /deployment
-.makefile
+makefile
 .vercel
 Dockerfile
 /go

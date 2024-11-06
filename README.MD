@@ -4,6 +4,79 @@
 
 This document provides an overview of the project folder structure golang .
 
+```sh 
+📦config
+ ┣ 📂fakers
+ ┃ ┣ 📜addres.go
+ ┃ ┣ 📜product.fakers.go
+ ┃ ┗ 📜user.fakers.go
+ ┣ 📂seeders
+ ┃ ┗ 📜seders.go
+ ┗ 📜database.go
+ 📦deployment
+ ┗ 📜docker-compose.yml
+ 📦controllers
+ ┣ 📜addresController.go
+ ┣ 📜CategoryController.go
+ ┣ 📜ProductControllers.go
+ ┣ 📜ProductImageControllers.go
+ ┗ 📜UserControllers.go
+ 📦repositories
+ ┣ 📜addres_repository.go
+ ┣ 📜categoy.repository.go
+ ┣ 📜productimage.go
+ ┣ 📜product_repository.go
+ ┗ 📜user_repository.go
+ 📦models
+ ┣ 📜addres.go
+ ┣ 📜category.go
+ ┣ 📜payment.go
+ ┣ 📜product.go
+ ┣ 📜productimages.go
+ ┗ 📜user.go
+ 📦docs
+ ┣ 📜product.yaml
+ ┗ 📜user.yaml
+ 📦dto
+ ┣ 📜addres_dto.go
+ ┣ 📜category_dto.go
+ ┣ 📜midtrans.dto.go
+ ┣ 📜product_dto.go
+ ┣ 📜product_image_dto.go
+ ┗ 📜user_dto.go
+ 📦services
+ ┣ 📜category_service.go
+ ┣ 📜product_service.go
+ ┗ 📜user_service.go
+ 📦middleware
+ ┣ 📜auth.go
+ ┣ 📜error.handling.go
+ ┗ 📜rate.limiting.go
+ 📦validations
+ ┣ 📜addres_validation.go
+ ┣ 📜category_validation.go
+ ┣ 📜productimage_validation.go
+ ┣ 📜product_validation.go
+ ┗ 📜user_validation.go
+ 📦utils
+ ┣ 📜generate.slug.go
+ ┣ 📜jwt.token.go
+ ┣ 📜logger.go
+ ┗ 📜random.go
+ 📦helpers
+ ┣ 📜formatter.go
+ ┣ 📜json.go
+ ┣ 📜parser.go
+ ┗ 📜string.go
+ 📦testing
+ ┣ 📜address_testing.go
+ ┣ 📜category_testing.go
+ ┣ 📜test.go
+ ┗ 📜user_testing.go
+ 📦routes
+ ┗ 📜route.go
+```
+
 ## Root Folders and Files
 
 - `.github/`: Contains GitHub configuration files such as workflows for CI/CD pipelines.
