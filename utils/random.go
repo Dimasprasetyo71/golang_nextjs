@@ -9,9 +9,7 @@ import (
     "github.com/shopspring/decimal"
 )
 
-// Inisialisasi seed untuk rand dan gofakeit satu kali
 func init() {
- // Recommended way to seed the random number generator
     rand.New(rand.NewSource(time.Now().UnixNano()))		
 	gofakeit.Seed(time.Now().UnixNano())
 }
@@ -41,12 +39,10 @@ func RandomBool() bool {
     return rand.Intn(2) == 1
 }
 
-// RandomStreetAddress menggunakan gofakeit untuk membuat alamat acak
 func RandomStreetAddress() string {
     return fmt.Sprintf("%s, %s", gofakeit.Street(), gofakeit.City())
 }
 
-// RandomSecondaryAddress membuat alamat sekunder acak
 func RandomSecondaryAddress() string {
     types := []string{"Apt", "Suite", "Unit"}
     addrType := types[rand.Intn(len(types))]
@@ -54,7 +50,6 @@ func RandomSecondaryAddress() string {
     return fmt.Sprintf("%s %d", addrType, number)
 }
 
-// RandomPostCode menggunakan gofakeit untuk membuat kode pos acak
 func RandomPostCode() string {
     return gofakeit.Zip()
 }

@@ -27,20 +27,19 @@ func UserRoutes(router *gin.Engine, db *gorm.DB) {
 	router.POST("/api/users/register", controllers.Register(db))
 
 	router.POST("/api/users/login", controllers.Login(db))
+	
 	router.PUT("/api/users/:id", controllers.UpdateUser(db))
 
 	router.DELETE("/api/users/:id", controllers.DeleteUser(db))
 
-	// Protected routes (requires authentication)
-	// Protected routes (requires authentication)
 	protected := router.Group("/api/users")
 
 	protected.Use(controllers.ProtectedEndpoint)
-	// Use specific routes to avoid conflicts Update user password
 
 }
 
 func AddressRoutes(router *gin.Engine, db *gorm.DB) {
+
 	router.GET("/api/addresses", controllers.GetAllAddresses(db))
 
 	router.GET("/api/addresses/:id", controllers.GetAddressByID(db))

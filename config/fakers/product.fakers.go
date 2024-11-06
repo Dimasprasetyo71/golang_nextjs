@@ -13,13 +13,12 @@ func ProductFaker(db *gorm.DB) ([]models.Product, []string) {
 	var products []models.Product
 	var userIDs []string
 
-	// Retrieve existing user IDs
 	db.Model(&models.User{}).Pluck("id", &userIDs)
 
 	for i := 0; i < 10; i++ {
 		product := models.Product{
 			ID:               uuid.New().String(),
-			UserID:           userIDs[i%len(userIDs)], // Use existing user IDs
+			UserID:           userIDs[i%len(userIDs)], 
 			Name:             faker.Name(),
 			ShortDescription: faker.Name(),
 			Description:      faker.Name(),
@@ -31,7 +30,7 @@ func ProductFaker(db *gorm.DB) ([]models.Product, []string) {
 		}
 		products = append(products, product)
 	}
-	return products, getProductIDs(products) // Return product IDs
+	return products, getProductIDs(products) 
 }
 
 func getProductIDs(products []models.Product) []string {
@@ -48,7 +47,7 @@ func ProductImageFaker(db *gorm.DB, productIDs []string) []models.ProductImage {
 	for i := 0; i < 10; i++ {
 		productImage := models.ProductImage{
 			ID:         uuid.New().String(),
-			ProductID:  productIDs[i%len(productIDs)], // Use existing product IDs
+			ProductID:  productIDs[i%len(productIDs)], 
 			Path:       faker.Name(),
 			ExtraLarge: faker.Name(),
 			Large:      faker.Name(),

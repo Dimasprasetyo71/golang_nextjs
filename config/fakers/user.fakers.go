@@ -17,7 +17,7 @@ func UserFaker(db *gorm.DB) []models.User {
 		password := faker.Password()
 		hashedPassword, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
 		if err != nil {
-			panic(err) // Handle error as needed
+			panic(err) 
 		}
 
 		user := models.User{
@@ -25,17 +25,16 @@ func UserFaker(db *gorm.DB) []models.User {
 			FirstName:     faker.Name(),
 			LastName:      faker.Name(),
 			Email:         faker.Email(),
-			Password:      string(hashedPassword), // Use hashed password
+			Password:      string(hashedPassword), 
 			CreatedAt:     time.Now(),
 			UpdatedAt:     time.Now(),
 		}
 
-		// Generate JWT token and assign it to RememberToken
 		token, err := utils.GenerateToken(user.ID)
 		if err != nil {
-			panic(err) // Handle error as needed
+			panic(err) 
 		}
-		user.RememberToken = token // Set the generated token in RememberToken
+		user.RememberToken = token 
 
 		if err := db.Create(&user).Error; err != nil {
 			panic(err)

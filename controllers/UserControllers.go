@@ -89,11 +89,7 @@ func GoogleCallback(c *gin.Context) {
 		return
 	}
 
-	// Process user info and create or log in the user in your system
-	// Assume user info is processed here
-
-	// Generate JWT token
-	// (JWT generation logic goes here)
+	
 
 	c.JSON(http.StatusOK, gin.H{"message": "User authenticated successfully with Google!"})
 }
@@ -109,7 +105,6 @@ func GithubCallback(c *gin.Context) {
 	state := c.Query("state")
 	code := c.Query("code")
 
-	// Verify the state parameter to prevent CSRF attacks
 	if state != "state" {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid state parameter."})
 		return
@@ -122,7 +117,6 @@ func GithubCallback(c *gin.Context) {
 		return
 	}
 
-	// Use the token to get user info
 	client := githubOAuthConfig.Client(context.Background(), token)
 	resp, err := client.Get("https://api.github.com/user")
 	if err != nil {
@@ -136,13 +130,11 @@ func GithubCallback(c *gin.Context) {
 		return
 	}
 
-	// Process user info and create or log in the user in your system
-	// Assume user info is processed here
+
 
 	c.JSON(http.StatusOK, gin.H{"message": "User authenticated successfully with GitHub!"})
 }
 
-// Register handles new user registration
 func Register(db *gorm.DB) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		req := new(RegisterRequest)
@@ -151,7 +143,6 @@ func Register(db *gorm.DB) gin.HandlerFunc {
 			return
 		}
 
-		// Hash the password
 		user := models.User{
 			FirstName: req.FirstName,
 			LastName:  req.LastName,
@@ -162,7 +153,6 @@ func Register(db *gorm.DB) gin.HandlerFunc {
 			return
 		}
 
-		// Save user to the database
 		if err := db.Create(&user).Error; err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": "Could not create user"})
 			return
@@ -172,7 +162,6 @@ func Register(db *gorm.DB) gin.HandlerFunc {
 	}
 }
 
-// Login handles user login and token generation
 func Login(db *gorm.DB) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		req := new(LoginRequest)
@@ -181,20 +170,17 @@ func Login(db *gorm.DB) gin.HandlerFunc {
 			return
 		}
 
-		// Find user by email
 		user := models.User{}
 		if err := models.GetUserByEmail(db, req.Email, &user); err != nil {
 			c.JSON(http.StatusUnauthorized, gin.H{"error": "Invalid credentials"})
 			return
 		}
 
-		// Check password
 		if err := user.CheckPassword(req.Password); err != nil {
 			c.JSON(http.StatusUnauthorized, gin.H{"error": "Invalid credentials"})
 			return
 		}
 
-		// Generate JWT token
 		secretKey := os.Getenv("GO_JWT_SECRET")
 		if secretKey == "" {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": "Secret key not set"})
@@ -214,17 +200,14 @@ func Login(db *gorm.DB) gin.HandlerFunc {
 	}
 }
 
-// ProtectedEndpoint is an example of a route that requires authentication
 func ProtectedEndpoint(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"message": "You are authorized!"})
 }
 
-// Logout simply acknowledges the logout request
 func Logout(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"message": "User logged out successfully"})
 }
 
-// GetAllUsers retrieves all users from the database
 func GetAllUsers(db *gorm.DB) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		var users []models.User
@@ -236,7 +219,6 @@ func GetAllUsers(db *gorm.DB) gin.HandlerFunc {
 	}
 }
 
-// GetUserByID retrieves a single user by their ID
 func GetUserByID(db *gorm.DB) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		id := c.Param("id")
@@ -249,7 +231,6 @@ func GetUserByID(db *gorm.DB) gin.HandlerFunc {
 	}
 }
 
-// UpdateUser updates an existing user's information by ID
 func UpdateUser(db *gorm.DB) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		id := c.Param("id")
@@ -266,13 +247,11 @@ func UpdateUser(db *gorm.DB) gin.HandlerFunc {
 			return
 		}
 
-		// Only update allowed fields
 		user.FirstName = req.FirstName
 		user.LastName = req.LastName
 		user.Email = req.Email
 		user.Image = req.Image
 
-		// Update user in the database
 		if err := db.Save(&user).Error; err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": "Could not update user"})
 			return
@@ -282,7 +261,6 @@ func UpdateUser(db *gorm.DB) gin.HandlerFunc {
 	}
 }
 
-// DeleteUser removes a user from the database
 func DeleteUser(db *gorm.DB) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		id := c.Param("id")
@@ -300,7 +278,6 @@ func DeleteUser(db *gorm.DB) gin.HandlerFunc {
 	}
 }
 
-// GetUserByEmail retrieves a user by their email
 func GetUserByEmail(db *gorm.DB) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		email := c.Param("email")
@@ -313,7 +290,6 @@ func GetUserByEmail(db *gorm.DB) gin.HandlerFunc {
 	}
 }
 
-// UpdateUserPassword updates a user's password
 func UpdateUserPassword(db *gorm.DB) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		id := c.Param("id")
@@ -323,20 +299,17 @@ func UpdateUserPassword(db *gorm.DB) gin.HandlerFunc {
 			return
 		}
 
-		// Bind request data
 		req := new(models.User)
 		if err := c.ShouldBindJSON(req); err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid input"})
 			return
 		}
 
-		// Hash the new password before saving
 		if err := user.HashPassword(req.Password); err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": "Could not hash password"})
 			return
 		}
 
-		// Update user in the database
 		if err := db.Save(&user).Error; err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": "Could not update user"})
 			return

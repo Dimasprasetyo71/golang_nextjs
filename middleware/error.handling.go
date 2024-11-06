@@ -24,10 +24,8 @@ func NewErrorResponse(err error) *ErrorResponse {
 }
 func ErrorHandlerMiddleware() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		// Menjalankan handler yang akan dipanggil
 		c.Next()
 
-		// Cek apakah ada error
 		if len(c.Errors) > 0 {
 			err := c.Errors.Last()
 			response := NewErrorResponse(err.Err)

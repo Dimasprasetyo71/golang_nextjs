@@ -23,12 +23,10 @@ func main() {
 		log.Fatal("$GOLANG_PORT must be set")
 	}
 
-	// Initialize Gin router
 	router := gin.New()
 	router.Use(cors.Default())
 	router.Use(middleware.ErrorHandlerMiddleware())
 	router.Use(middleware.RateLimitMiddleware())
-	// Connect to the database
 	db := config.ConnectDB()
 	gin.SetMode(gin.ReleaseMode)
 

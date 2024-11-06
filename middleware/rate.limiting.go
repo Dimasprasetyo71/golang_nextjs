@@ -7,7 +7,7 @@ import (
 	"golang.org/x/time/rate"
 )
 
-var limiter = rate.NewLimiter(1, 3) // 1 permintaan per detik, dengan 3 permintaan burst
+var limiter = rate.NewLimiter(1, 3) 
 
 func RateLimitMiddleware() gin.HandlerFunc {
 	return func(c *gin.Context) {

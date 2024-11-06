@@ -1,13 +1,12 @@
 package utils
 
 import (
-	"errors" // Import package errors
+	"errors" 
 	"github.com/golang-jwt/jwt/v5"
 	"os"
 	"time"
 )
 
-// GenerateToken generates a JWT token for a user with a given userID
 func GenerateToken(userID string) (string, error) {
 	secretKey := os.Getenv("GO_JWT_SECRET")
 	if secretKey == "" {
@@ -23,6 +22,5 @@ func GenerateToken(userID string) (string, error) {
 
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
 
-	// Sign the token with the secret key
 	return token.SignedString([]byte(secretKey))
 }

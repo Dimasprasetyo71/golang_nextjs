@@ -1,12 +1,12 @@
 package utils
 
 import (
-	    "github.com/sirupsen/logrus"
+	"github.com/sirupsen/logrus"
 )
 
 var Logger = logrus.New()
 
-func initLogger() {
+func InitLogger() {
 	Logger.SetFormatter(&logrus.JSONFormatter{})
 	Logger.SetLevel(logrus.InfoLevel)
 }

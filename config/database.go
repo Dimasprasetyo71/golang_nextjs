@@ -14,6 +14,7 @@ type Server struct {
 	DB *gorm.DB
 }
 
+// you can use profesional test load for env like example https://dasarpemrogramangolang.novalagung.com/C-best-practice-configuration-env-var.html
 func LoadEnv() {
 	if err := godotenv.Load(); err != nil {
 		log.Fatal("Error loading .env file")
