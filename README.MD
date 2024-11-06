@@ -1,4 +1,4 @@
-# Gin Web Framework
+# GIN PROJECT ECORMERCE GOLANG 
 
 # Project Folder Structure
 
