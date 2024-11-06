@@ -1,80 +1,81 @@
-# GIN PROJECT ECORMERCE GOLANG 
+# Gin Web Framework
 
 # Project Folder Structure
 
 This document provides an overview of the project folder structure golang .
 
-📦 <span style="color: lightblue;">config</span>
- ┣ 📂 <span style="color: lightblue;">fakers</span>
- ┃ ┣ 📜 <span style="color: lightgreen;">addres.go</span>
- ┃ ┣ 📜 <span style="color: lightgreen;">product.fakers.go</span>
- ┃ ┗ 📜 <span style="color: lightgreen;">user.fakers.go</span>
- ┣ 📂 <span style="color: lightblue;">seeders</span>
- ┃ ┗ 📜 <span style="color: lightgreen;">seders.go</span>
- ┗ 📜 <span style="color: lightgreen;">database.go</span>
-📦 <span style="color: lightblue;">deployment</span>
- ┗ 📜 <span style="color: lightgreen;">docker-compose.yml</span>
-📦 <span style="color: lightblue;">controllers</span>
- ┣ 📜 <span style="color: lightgreen;">addresController.go</span>
- ┣ 📜 <span style="color: lightgreen;">CategoryController.go</span>
- ┣ 📜 <span style="color: lightgreen;">ProductControllers.go</span>
- ┣ 📜 <span style="color: lightgreen;">ProductImageControllers.go</span>
- ┗ 📜 <span style="color: lightgreen;">UserControllers.go</span>
-📦 <span style="color: lightblue;">repositories</span>
- ┣ 📜 <span style="color: lightgreen;">addres_repository.go</span>
- ┣ 📜 <span style="color: lightgreen;">categoy.repository.go</span>
- ┣ 📜 <span style="color: lightgreen;">productimage.go</span>
- ┣ 📜 <span style="color: lightgreen;">product_repository.go</span>
- ┗ 📜 <span style="color: lightgreen;">user_repository.go</span>
-📦 <span style="color: lightblue;">models</span>
- ┣ 📜 <span style="color: lightgreen;">addres.go</span>
- ┣ 📜 <span style="color: lightgreen;">category.go</span>
- ┣ 📜 <span style="color: lightgreen;">payment.go</span>
- ┣ 📜 <span style="color: lightgreen;">product.go</span>
- ┣ 📜 <span style="color: lightgreen;">productimages.go</span>
- ┗ 📜 <span style="color: lightgreen;">user.go</span>
-📦 <span style="color: lightblue;">docs</span>
- ┣ 📜 <span style="color: lightgreen;">product.yaml</span>
- ┗ 📜 <span style="color: lightgreen;">user.yaml</span>
-📦 <span style="color: lightblue;">dto</span>
- ┣ 📜 <span style="color: lightgreen;">addres_dto.go</span>
- ┣ 📜 <span style="color: lightgreen;">category_dto.go</span>
- ┣ 📜 <span style="color: lightgreen;">midtrans.dto.go</span>
- ┣ 📜 <span style="color: lightgreen;">product_dto.go</span>
- ┣ 📜 <span style="color: lightgreen;">product_image_dto.go</span>
- ┗ 📜 <span style="color: lightgreen;">user_dto.go</span>
-📦 <span style="color: lightblue;">services</span>
- ┣ 📜 <span style="color: lightgreen;">category_service.go</span>
- ┣ 📜 <span style="color: lightgreen;">product_service.go</span>
- ┗ 📜 <span style="color: lightgreen;">user_service.go</span>
-📦 <span style="color: lightblue;">middleware</span>
- ┣ 📜 <span style="color: lightgreen;">auth.go</span>
- ┣ 📜 <span style="color: lightgreen;">error.handling.go</span>
- ┗ 📜 <span style="color: lightgreen;">rate.limiting.go</span>
-📦 <span style="color: lightblue;">validations</span>
- ┣ 📜 <span style="color: lightgreen;">addres_validation.go</span>
- ┣ 📜 <span style="color: lightgreen;">category_validation.go</span>
- ┣ 📜 <span style="color: lightgreen;">productimage_validation.go</span>
- ┣ 📜 <span style="color: lightgreen;">product_validation.go</span>
- ┗ 📜 <span style="color: lightgreen;">user_validation.go</span>
-📦 <span style="color: lightblue;">utils</span>
- ┣ 📜 <span style="color: lightgreen;">generate.slug.go</span>
- ┣ 📜 <span style="color: lightgreen;">jwt.token.go</span>
- ┣ 📜 <span style="color: lightgreen;">logger.go</span>
- ┗ 📜 <span style="color: lightgreen;">random.go</span>
-📦 <span style="color: lightblue;">helpers</span>
- ┣ 📜 <span style="color: lightgreen;">formatter.go</span>
- ┣ 📜 <span style="color: lightgreen;">json.go</span>
- ┣ 📜 <span style="color: lightgreen;">parser.go</span>
- ┗ 📜 <span style="color: lightgreen;">string.go</span>
-📦 <span style="color: lightblue;">testing</span>
- ┣ 📜 <span style="color: lightgreen;">address_testing.go</span>
- ┣ 📜 <span style="color: lightgreen;">category_testing.go</span>
- ┣ 📜 <span style="color: lightgreen;">test.go</span>
- ┗ 📜 <span style="color: lightgreen;">user_testing.go</span>
-📦 <span style="color: lightblue;">routes</span>
- ┗ 📜 <span style="color: lightgreen;">route.go</span>
-
+```sh 
+📦config
+ ┣ 📂fakers
+ ┃ ┣ 📜addres.go
+ ┃ ┣ 📜product.fakers.go
+ ┃ ┗ 📜user.fakers.go
+ ┣ 📂seeders
+ ┃ ┗ 📜seders.go
+ ┗ 📜database.go
+ 📦deployment
+ ┗ 📜docker-compose.yml
+ 📦controllers
+ ┣ 📜addresController.go
+ ┣ 📜CategoryController.go
+ ┣ 📜ProductControllers.go
+ ┣ 📜ProductImageControllers.go
+ ┗ 📜UserControllers.go
+ 📦repositories
+ ┣ 📜addres_repository.go
+ ┣ 📜categoy.repository.go
+ ┣ 📜productimage.go
+ ┣ 📜product_repository.go
+ ┗ 📜user_repository.go
+ 📦models
+ ┣ 📜addres.go
+ ┣ 📜category.go
+ ┣ 📜payment.go
+ ┣ 📜product.go
+ ┣ 📜productimages.go
+ ┗ 📜user.go
+ 📦docs
+ ┣ 📜product.yaml
+ ┗ 📜user.yaml
+ 📦dto
+ ┣ 📜addres_dto.go
+ ┣ 📜category_dto.go
+ ┣ 📜midtrans.dto.go
+ ┣ 📜product_dto.go
+ ┣ 📜product_image_dto.go
+ ┗ 📜user_dto.go
+ 📦services
+ ┣ 📜category_service.go
+ ┣ 📜product_service.go
+ ┗ 📜user_service.go
+ 📦middleware
+ ┣ 📜auth.go
+ ┣ 📜error.handling.go
+ ┗ 📜rate.limiting.go
+ 📦validations
+ ┣ 📜addres_validation.go
+ ┣ 📜category_validation.go
+ ┣ 📜productimage_validation.go
+ ┣ 📜product_validation.go
+ ┗ 📜user_validation.go
+ 📦utils
+ ┣ 📜generate.slug.go
+ ┣ 📜jwt.token.go
+ ┣ 📜logger.go
+ ┗ 📜random.go
+ 📦helpers
+ ┣ 📜formatter.go
+ ┣ 📜json.go
+ ┣ 📜parser.go
+ ┗ 📜string.go
+ 📦testing
+ ┣ 📜address_testing.go
+ ┣ 📜category_testing.go
+ ┣ 📜test.go
+ ┗ 📜user_testing.go
+ 📦routes
+ ┗ 📜route.go
+```
 
 ## Root Folders and Files
 
