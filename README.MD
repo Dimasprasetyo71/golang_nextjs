@@ -4,7 +4,6 @@
 
 This document provides an overview of the project folder structure golang .
 
-```sh 
 📦 <span style="color: lightblue;">config</span>
  ┣ 📂 <span style="color: lightblue;">fakers</span>
  ┃ ┣ 📜 <span style="color: lightgreen;">addres.go</span>
@@ -76,7 +75,6 @@ This document provides an overview of the project folder structure golang .
 📦 <span style="color: lightblue;">routes</span>
  ┗ 📜 <span style="color: lightgreen;">route.go</span>
 
-```
 
 ## Root Folders and Files
 
