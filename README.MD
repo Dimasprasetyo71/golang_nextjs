@@ -3,7 +3,6 @@
 # Project Folder Structure
 
 This document provides an overview of the project folder structure golang .
-sdadsafa
 ```sh 
 📦config
  ┣ 📂fakers
