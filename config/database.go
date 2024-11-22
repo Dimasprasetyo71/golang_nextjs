@@ -1,6 +1,7 @@
 package config
 
 import (
+	// "DimasPrasetyo/backend-next/models"
 	"fmt"
 	"log"
 	"os"
@@ -32,3 +33,14 @@ func ConnectDB() *gorm.DB {
 
     return db
 }
+
+// func Migrate(db *gorm.DB) {
+// 	db.AutoMigrate(
+// 		&models.User{},
+// 		&models.Address{},
+// 		&models.Category{},
+// 		&models.Product{},
+// 		&models.ProductImage{},
+// 		&models.Payment{},
+// 	)
+// }

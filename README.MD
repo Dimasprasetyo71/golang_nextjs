@@ -2,7 +2,7 @@
 
 # Project Folder Structure
 
-This document provides an overview of the project folder structure golang .
+This document provides an overview of the project folder structure golang gin framework.
 ```sh 
 📦config
  ┣ 📂fakers

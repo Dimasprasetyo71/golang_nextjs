@@ -96,3 +96,11 @@ func ProductRoutes(router *gin.Engine, db *gorm.DB) {
 	router.DELETE("/api/products/:id", controllers.DeleteProduct(db))
 
 }
+
+func PaymentRoutes(router *gin.Engine, db *gorm.DB) {
+	router.GET("/api/payments", controllers.GetAllPayments)
+	router.GET("/api/payments/:id", controllers.GetPaymentByID)
+	router.POST("/api/payments", controllers.CreatePayment)
+	router.PUT("/api/payments/:id", controllers.UpdatePaymentStatus)
+	router.DELETE("/api/payments/:id", controllers.DeletePayment)
+}
